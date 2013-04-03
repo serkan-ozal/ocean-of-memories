@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	
+  	<modelVersion>4.0.0</modelVersion>
+  	<groupId>tr.com.javalanche</groupId>
+  	<artifactId>ocean-of-memories</artifactId>
+  	<version>1.0.0-SNAPSHOT</version>
+    <name>Ocean Of Memories Article Series</name>
+    <url>https://github.com/serkan-ozal/ocean-of-memories</url>
+    
+  	<properties>
+        
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <source.compiler.version>1.6</source.compiler.version>
+        <target.compiler.version>1.6</target.compiler.version>
+        
+        <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>2.4</maven.resources.plugin.version>
+        <maven.surefire.plugin.version>2.9</maven.surefire.plugin.version>
+		
+		<tools.version>1.6.0</tools.version>
+
+    </properties>
+  
+  	<build>
+        <finalName>ocean-of-memories</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${source.compiler.version}</source>
+                    <target>${target.compiler.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+    
+   	<dependencies>
+		<dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>${tools.version}</version>
+        </dependency>
+	</dependencies>
+    
+    <repositories>
+        <repository>
+            <id>nexus-maven-repository</id>
+            <url>https://maven-us.nuxeo.org/nexus/content/groups/public/</url>
+        </repository>
+		<repository>
+			<id>my-maven-repository</id>
+			<url>https://github.com/serkan-ozal/maven-repository/raw/master/</url>
+		</repository>
+	</repositories>
+    
+</project>
