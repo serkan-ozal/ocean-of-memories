@@ -1,4 +1,4 @@
-package tr.com.javalanche.oceanofmemories.article1.gc;
+package tr.com.javalanche.oceanofmemories.article0.gc;
 
 import tr.com.javalanche.oceanofmemories.common.util.MemoryUtil;
 import tr.com.javalanche.oceanofmemories.common.util.Util;
@@ -6,9 +6,14 @@ import tr.com.javalanche.oceanofmemories.common.util.Util;
 public class GarbageCollectionAllocationDeallocationDemo {
 
 	public static void main(String[] args) {
-		final int SAMPLE_OBJECT_COUNT = 1000000;
-		final SampleClass[] sampleObjectArray = new SampleClass[SAMPLE_OBJECT_COUNT];
+		MemoryUtil.runGC();Util.waitFor(5000);
+		MemoryUtil.printMemoryUsage();
 		
+		
+		final int SAMPLE_OBJECT_COUNT = 1000000;
+		SampleClass[] sampleObjectArray = new SampleClass[SAMPLE_OBJECT_COUNT];
+		MemoryUtil.printMemoryUsage();
+		Util.waitFor(5000);
 		MemoryUtil.runGC();
 
 		System.out.println("Initial Memory Usage: ");
@@ -22,6 +27,8 @@ public class GarbageCollectionAllocationDeallocationDemo {
 
 		System.out.println("Memory Usage Before GC: ");
 		MemoryUtil.printMemoryUsage();
+		
+		sampleObjectArray = null;
 		
 		MemoryUtil.runGC();
 		

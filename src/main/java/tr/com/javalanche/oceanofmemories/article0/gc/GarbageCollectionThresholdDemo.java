@@ -1,4 +1,4 @@
-package tr.com.javalanche.oceanofmemories.article1.gc;
+package tr.com.javalanche.oceanofmemories.article0.gc;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;

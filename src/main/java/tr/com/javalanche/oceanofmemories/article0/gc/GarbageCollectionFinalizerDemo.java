@@ -1,4 +1,4 @@
-package tr.com.javalanche.oceanofmemories.article1.gc;
+package tr.com.javalanche.oceanofmemories.article0.gc;
 
 import tr.com.javalanche.oceanofmemories.common.util.MemoryUtil;
 import tr.com.javalanche.oceanofmemories.common.util.Util;
