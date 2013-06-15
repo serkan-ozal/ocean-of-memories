@@ -1,4 +1,4 @@
-package tr.com.javalanche.oceanofmemories.article0.gc;
+package com.zeroturnaround.rebellabs.oceanofmemories.article0.gc;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
@@ -12,8 +12,9 @@ import javax.management.NotificationEmitter;
 import javax.management.NotificationListener;
 import javax.management.openmbean.CompositeData;
 
-import tr.com.javalanche.oceanofmemories.common.util.MemoryUtil;
-import tr.com.javalanche.oceanofmemories.common.util.Util;
+import com.zeroturnaround.rebellabs.oceanofmemories.common.util.MemoryUtil;
+import com.zeroturnaround.rebellabs.oceanofmemories.common.util.Util;
+
 
 public class GarbageCollectionThresholdDemo {
 

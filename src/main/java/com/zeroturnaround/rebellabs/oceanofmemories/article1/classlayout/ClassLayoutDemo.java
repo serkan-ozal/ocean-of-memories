@@ -1,4 +1,4 @@
-package tr.com.javalanche.oceanofmemories.article1.classlayout;
+package com.zeroturnaround.rebellabs.oceanofmemories.article1.classlayout;
 
 public class ClassLayoutDemo {
 

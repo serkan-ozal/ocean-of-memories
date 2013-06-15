@@ -1,7 +1,7 @@
-package tr.com.javalanche.oceanofmemories.article0.gc;
+package com.zeroturnaround.rebellabs.oceanofmemories.article0.gc;
 
-import tr.com.javalanche.oceanofmemories.common.util.MemoryUtil;
-import tr.com.javalanche.oceanofmemories.common.util.Util;
+import com.zeroturnaround.rebellabs.oceanofmemories.common.util.MemoryUtil;
+import com.zeroturnaround.rebellabs.oceanofmemories.common.util.Util;
 
 public class GarbageCollectionParameterDemo {
 

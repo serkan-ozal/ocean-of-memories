@@ -1,4 +1,4 @@
-package tr.com.javalanche.oceanofmemories.common.util;
+package com.zeroturnaround.rebellabs.oceanofmemories.common.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
