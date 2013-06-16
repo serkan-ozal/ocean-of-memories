@@ -11,14 +11,17 @@
         
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
-        <source.compiler.version>1.6</source.compiler.version>
-        <target.compiler.version>1.6</target.compiler.version>
+        <source.compiler.version>1.7</source.compiler.version>
+        <target.compiler.version>1.7</target.compiler.version>
         
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
         <maven.resources.plugin.version>2.4</maven.resources.plugin.version>
         <maven.surefire.plugin.version>2.9</maven.surefire.plugin.version>
 		
 		<tools.version>1.6.0</tools.version>
+		<log4j.version>1.2.16</log4j.version>
+		<guava.version>13.0</guava.version>
+		<commons.lang.version>2.6</commons.lang.version>
 
     </properties>
   
@@ -58,11 +61,43 @@
     </build>
     
    	<dependencies>
+   	    
+   	    <!-- Java tools.jar                               -->
+		<!-- ============================================ -->
 		<dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
             <version>${tools.version}</version>
         </dependency>
+        <!-- ============================================ -->
+        
+        
+        
+		<!-- logging                                      -->
+		<!-- ============================================ -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- ============================================ -->
+
+
+
+        <!-- utility                                      -->
+        <!-- ============================================ -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+		<!-- ============================================ -->
+		
 	</dependencies>
     
     <repositories>
