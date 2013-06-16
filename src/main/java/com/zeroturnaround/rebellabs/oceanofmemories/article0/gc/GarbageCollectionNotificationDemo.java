@@ -16,10 +16,10 @@ import com.sun.management.GarbageCollectionNotificationInfo;
 import com.zeroturnaround.rebellabs.oceanofmemories.common.util.MemoryUtil;
 import com.zeroturnaround.rebellabs.oceanofmemories.common.util.Util;
 
-
 /**
  * NOTE: This demo is only available at Java 7
  */
+@SuppressWarnings("restriction")
 public class GarbageCollectionNotificationDemo {
 
 	public static void main(String[] args) {
