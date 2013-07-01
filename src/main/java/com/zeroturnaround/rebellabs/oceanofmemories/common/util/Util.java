@@ -7,6 +7,9 @@ import java.net.URLDecoder;
 
 public class Util {
 	
+	public static final int ASCII_CODE_OF_MIN_PRINTABLE_CHARACTER = 33;
+	public static final int ASCII_CODE_OF_MAX_PRINTABLE_CHARACTER = 127;
+	
 	private Util() {
 		
 	}
@@ -17,6 +20,12 @@ public class Util {
 	
 	public static double percantegeOf(double value1, double value2) {
 		return makeDouble2DigitPrecisioned((value1 * 100) / value2);
+	}
+
+	public static boolean isPrintableChacter(char c) {
+		return 
+			c >= ASCII_CODE_OF_MIN_PRINTABLE_CHARACTER && 
+			c <= ASCII_CODE_OF_MAX_PRINTABLE_CHARACTER;
 	}
 	
 	public static void waitFor(long millisecods) {
