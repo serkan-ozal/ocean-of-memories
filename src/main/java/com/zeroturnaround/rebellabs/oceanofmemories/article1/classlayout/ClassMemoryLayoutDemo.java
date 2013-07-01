@@ -1,8 +1,10 @@
 package com.zeroturnaround.rebellabs.oceanofmemories.article1.classlayout;
 
+import com.zeroturnaround.rebellabs.oceanofmemories.article1.SampleBaseClass;
+import com.zeroturnaround.rebellabs.oceanofmemories.article1.SampleClass;
 import com.zeroturnaround.rebellabs.oceanofmemories.common.util.JvmUtil;
 
-public class ClassLayoutDemo {
+public class ClassMemoryLayoutDemo {
 
 	public static void main(String[] args) throws Exception {
 		JvmUtil.info();
@@ -38,43 +40,6 @@ public class ClassLayoutDemo {
 		System.out.println("==========================================================");
 		System.out.println(JvmUtil.fieldsLayoutAsString(SampleBaseClass.class));
 		System.out.println("==========================================================\n\n");
-	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////
-
-	public static class SampleClass extends SampleBaseClass {
-		
-		private final static byte b = 100;
-		
-		private int i = 5;
-		private long l = 10;
-		
-		public int getI() {
-			return i;
-		}
-		
-		public void setI(int i) {
-			this.i = i;
-		}
-
-		public long getL() {
-			return l;
-		}
-		
-		public void setL(long l) {
-			this.l = l;
-		}
-
-		public static byte getB() {
-			return b;
-		}
-		
-	}
-	
-	public static class SampleBaseClass {
-		
-		protected short s = 20;
-
 	}
 
 }
