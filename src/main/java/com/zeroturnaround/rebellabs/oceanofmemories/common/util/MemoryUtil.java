@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 
 import sun.misc.Unsafe;
 
-@SuppressWarnings("restriction")
 public class MemoryUtil {
 
 	public static final long BYTE_COUNT_IN_KB = 1024;

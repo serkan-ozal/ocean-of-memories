@@ -48,7 +48,6 @@ import com.google.common.collect.Multiset;
  * 
  * Note: Use "-XX:-UseCompressedOops" for 64 bit JVM to disable CompressedOops
  */
-@SuppressWarnings("restriction")
 public class JvmUtil {
 
 	public static final String JAVA_1_6 = "1.6";
@@ -90,10 +89,12 @@ public class JvmUtil {
     public static final int CLASS_DEF_POINTER_OFFSET_IN_OBJECT_FOR_64_BIT = 8;
     
     public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_32_BIT_FOR_JAVA_1_6 = 8; 
-    public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_FOR_JAVA_1_6 = 12;
+    public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITH_COMPRESSED_REF_FOR_JAVA_1_6 = 12;
+    public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITHOUT_COMPRESSED_REF_FOR_JAVA_1_6 = 16;
     
     public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_32_BIT_FOR_JAVA_1_7 = 80; 
-    public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_FOR_JAVA_1_7 = 84;
+    public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITH_COMPRESSED_REF_FOR_JAVA_1_7 = 84;
+    public static final int CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITHOUT_COMPRESSED_REF_FOR_JAVA_1_7 = 160;
     
     public static final int SIZE_FIELD_OFFSET_IN_CLASS_32_BIT = 12;
     public static final int SIZE_FIELD_OFFSET_IN_CLASS_64_BIT = 24;
@@ -176,10 +177,24 @@ public class JvmUtil {
             case SIZE_64_BIT:
             	JvmUtil.classDefPointerOffsetInObject = CLASS_DEF_POINTER_OFFSET_IN_OBJECT_FOR_64_BIT;
             	if (isJava_1_6()) {
-            		JvmUtil.classDefPointerOffsetInClass = CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_FOR_JAVA_1_6;
+            		if (options.compressedRef) {
+            			JvmUtil.classDefPointerOffsetInClass = 
+            					CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITH_COMPRESSED_REF_FOR_JAVA_1_6;
+            		}
+            		else {
+            			JvmUtil.classDefPointerOffsetInClass = 
+            					CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITHOUT_COMPRESSED_REF_FOR_JAVA_1_6;
+            		}
             	}
             	else if (isJava_1_7()) {
-            		JvmUtil.classDefPointerOffsetInClass = CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_FOR_JAVA_1_7;
+            		if (options.compressedRef) {
+            			JvmUtil.classDefPointerOffsetInClass = 
+            					CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITH_COMPRESSED_REF_FOR_JAVA_1_7;
+            		}
+            		else {
+            			JvmUtil.classDefPointerOffsetInClass = 
+            					CLASS_DEF_POINTER_OFFSET_IN_CLASS_64_BIT_WITHOUT_COMPRESSED_REF_FOR_JAVA_1_7;
+            		}
             	}
             	JvmUtil.sizeFieldOffsetOffsetInClass = SIZE_FIELD_OFFSET_IN_CLASS_64_BIT;
                 break;
@@ -1066,6 +1081,7 @@ public class JvmUtil {
         System.out.println("OS Architecture            : " + OS_ARCH);
         System.out.println("OS Name                    : " + OS_NAME);
         System.out.println("OS Version                 : " + OS_VERSION);
+        System.out.println("Word Size                  : " + WORD + " byte");
         
         System.out.println("Running " + (addressSize * BYTE) + "-bit " + options.name + " VM.");
         if (options.compressedRef) {

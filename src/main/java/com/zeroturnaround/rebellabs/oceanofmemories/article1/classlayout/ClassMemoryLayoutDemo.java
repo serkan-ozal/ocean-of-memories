@@ -11,20 +11,24 @@ public class ClassMemoryLayoutDemo {
 		
 		///////////////////////////////////////////////////////////////////////////////////////
 		
+		long addressOfObjectClass = JvmUtil.addressOfClass(Object.class);
 		long addressOfClass = JvmUtil.addressOfClass(SampleClass.class);
 		long addressOfBaseClass = JvmUtil.addressOfClass(SampleBaseClass.class);
 		
+		System.out.println("Address of java.lang.Object class: 0x" + Long.toHexString(addressOfObjectClass));
 		
+		System.out.println();
+
 		System.out.println("Memory layout of SampleClass at 0x"  + Long.toHexString(addressOfClass) + ":");
 		System.out.println("==========================================================");
-		JvmUtil.dump(addressOfClass, 128);
+		JvmUtil.dump(addressOfClass, 32 * JvmUtil.WORD);
 		System.out.println("==========================================================");
 		
 		System.out.println();
 		
 		System.out.println("Memory layout of SampleBaseClass at 0x"  + Long.toHexString(addressOfBaseClass) + ":");
 		System.out.println("==========================================================");
-		JvmUtil.dump(addressOfBaseClass, 128);
+		JvmUtil.dump(addressOfBaseClass, 64 * JvmUtil.WORD);
 		System.out.println("==========================================================");
 		
 		///////////////////////////////////////////////////////////////////////////////////////

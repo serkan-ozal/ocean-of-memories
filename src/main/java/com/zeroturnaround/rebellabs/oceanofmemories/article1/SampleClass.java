@@ -1,10 +1,6 @@
 package com.zeroturnaround.rebellabs.oceanofmemories.article1;
 
-import java.io.Serializable;
-
-public class SampleClass extends SampleBaseClass implements Serializable {
-
-	private static final long serialVersionUID = 4140100526971264041L;
+public final class SampleClass extends SampleBaseClass {
 
 	private final static byte b = 100;
 	
