@@ -10,7 +10,7 @@ public class ClassMemoryLayoutDemo {
 		JvmUtil.info();
 		
 		///////////////////////////////////////////////////////////////////////////////////////
-		
+
 		long addressOfObjectClass = JvmUtil.addressOfClass(Object.class);
 		long addressOfClass = JvmUtil.addressOfClass(SampleClass.class);
 		long addressOfBaseClass = JvmUtil.addressOfClass(SampleBaseClass.class);
