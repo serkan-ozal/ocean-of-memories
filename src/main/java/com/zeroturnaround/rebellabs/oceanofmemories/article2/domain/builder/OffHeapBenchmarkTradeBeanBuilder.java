@@ -5,7 +5,6 @@ import com.zeroturnaround.rebellabs.oceanofmemories.common.domain.builder.Builde
 
 public class OffHeapBenchmarkTradeBeanBuilder implements Builder<OffHeapBenchmarkTradeBean> {
 
-	private long elementKey;
 	private long tradeId;
 	private long clientId;
 	private int venueCode;
@@ -16,8 +15,20 @@ public class OffHeapBenchmarkTradeBeanBuilder implements Builder<OffHeapBenchmar
 	
 	@Override
 	public OffHeapBenchmarkTradeBean build() {
-		// TODO Auto-generated method stub
-		return null;
+		return 
+			new OffHeapBenchmarkTradeBean(
+					tradeId, clientId, venueCode, instrumentCode, price, quantity, side);
+	}
+	
+	public OffHeapBenchmarkTradeBeanBuilder elementKey(long elementKey) {
+		this.tradeId = elementKey << 1;
+		this.clientId = elementKey << 2;
+		this.venueCode = (int) (elementKey >> 2);
+		this.instrumentCode = (int) (elementKey >> 4);
+		this.price = elementKey << 3;
+		this.quantity = elementKey << 4;
+		this.side = (char) (elementKey % Character.MAX_VALUE);
+		return this;
 	}
 
 	public OffHeapBenchmarkTradeBeanBuilder tradeId(long tradeId) {

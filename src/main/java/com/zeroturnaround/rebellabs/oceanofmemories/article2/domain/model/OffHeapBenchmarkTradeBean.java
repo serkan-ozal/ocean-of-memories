@@ -14,6 +14,16 @@ public class OffHeapBenchmarkTradeBean implements OffHeapBenchmarkTrade {
 		
 	}
 	
+	public OffHeapBenchmarkTradeBean(long key) {
+		this.tradeId = key << 1;
+		this.clientId = key << 2;
+		this.venueCode = (int) (key >> 2);
+		this.instrumentCode = (int) (key >> 4);
+		this.price = key << 3;
+		this.quantity = key << 4;
+		this.side = (char) (key % Character.MAX_VALUE);
+	}
+	
 	public OffHeapBenchmarkTradeBean(long tradeId, long clientId,
 			int venueCode, int instrumentCode, long price, long quantity, char side) {
 		this.tradeId = tradeId;

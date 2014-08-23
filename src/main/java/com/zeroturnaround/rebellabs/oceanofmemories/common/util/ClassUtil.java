@@ -41,14 +41,27 @@ public class ClassUtil {
 	public static byte[] getContentOfClass(Class<?> clazz) {
 		File classFile = getFileOfClass(clazz);
 		if (classFile.exists()) {
+			BufferedInputStream bis = null;
 			try {
-				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(classFile));
+				bis = new BufferedInputStream(new FileInputStream(classFile));
 				byte[] buffer = new byte[(int)classFile.length()];
 				bis.read(buffer);
 				return buffer;
 			}
 			catch (IOException e) {
 				logger.error("Error occured while reading content of class " + clazz.getName(), e);
+			}
+			finally {
+				if (bis != null) {
+					try {
+						bis.close();
+					} 
+					catch (IOException e) {
+						logger.error(
+								"Error occured while closing file stream of class " + 
+								clazz.getName() + e);
+					}
+				}
 			}
 		}
 		else {

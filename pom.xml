@@ -17,11 +17,13 @@
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
         <maven.resources.plugin.version>2.4</maven.resources.plugin.version>
         <maven.surefire.plugin.version>2.9</maven.surefire.plugin.version>
+        <maven.shade.plugin.version>2.0</maven.shade.plugin.version>
 		
-		<tools.version>1.6.0</tools.version>
+		<tools.version>1.7</tools.version>
 		<log4j.version>1.2.16</log4j.version>
 		<guava.version>13.0</guava.version>
 		<commons.lang.version>2.6</commons.lang.version>
+		<jmh.version>0.9.7</jmh.version>
 
     </properties>
   
@@ -36,6 +38,8 @@
                     <source>${source.compiler.version}</source>
                     <target>${target.compiler.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <executable>${env.JAVA7_HOME}/bin/javac</executable>
+					<fork>true</fork>
                 </configuration>
             </plugin>
             <plugin>
@@ -50,6 +54,35 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven.shade.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>ocean-of-memories-benchmarks</finalName>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.openjdk.jmh.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/services/javax.annotation.processing.Processor</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <resources>
@@ -68,6 +101,23 @@
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
             <version>${tools.version}</version>
+        </dependency>
+        <!-- ============================================ -->
+        
+        
+        
+        <!-- JMH                                          -->
+		<!-- ============================================ -->
+		<dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
         </dependency>
         <!-- ============================================ -->
         
