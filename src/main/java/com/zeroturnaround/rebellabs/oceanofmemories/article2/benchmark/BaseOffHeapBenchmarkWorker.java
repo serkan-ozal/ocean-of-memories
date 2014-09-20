@@ -29,6 +29,11 @@ public abstract class BaseOffHeapBenchmarkWorker implements OffHeapBenchmarkWork
 	}
 	
 	@Override
+	public void flush() {
+		
+	}
+	
+	@Override
 	public void finish() {
 		
 	}

@@ -1,6 +1,8 @@
 package com.zeroturnaround.rebellabs.oceanofmemories.article2.domain.model;
 
-public interface OffHeapBenchmarkTrade {
+import java.io.Serializable;
+
+public interface OffHeapBenchmarkTrade extends Serializable {
 
 	/*
 	 * @00  8 <Object Header>
@@ -17,6 +19,7 @@ public interface OffHeapBenchmarkTrade {
 	
 	int LAYOUTED_SIZE = 48; // 56 - 8 = 48;
 	int SIZE = 42; // 8 + 8 + 4 + 4 + 8 + 8 + 2;
+	int STREAMED_APPROXIMATE_SIZE = 50;
 	
 	long getTradeId();
 	void setTradeId(long tradeId);

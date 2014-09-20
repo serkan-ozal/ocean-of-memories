@@ -10,6 +10,7 @@ public interface OffHeapBenchmarkWorker {
 	OffHeapBenchmarkTrade createElement();
 	void saveElement(OffHeapBenchmarkTrade element);
 	OffHeapBenchmarkTrade getElement(int elementOrder);
+	void flush();
 	void finish();
 
 }

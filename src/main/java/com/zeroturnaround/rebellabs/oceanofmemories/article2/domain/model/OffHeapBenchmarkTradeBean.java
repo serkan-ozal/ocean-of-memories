@@ -1,5 +1,6 @@
 package com.zeroturnaround.rebellabs.oceanofmemories.article2.domain.model;
 
+@SuppressWarnings("serial")
 public class OffHeapBenchmarkTradeBean implements OffHeapBenchmarkTrade {
 
 	private long tradeId;
@@ -21,7 +22,7 @@ public class OffHeapBenchmarkTradeBean implements OffHeapBenchmarkTrade {
 		this.instrumentCode = (int) (key >> 4);
 		this.price = key << 3;
 		this.quantity = key << 4;
-		this.side = (char) (key % Character.MAX_VALUE);
+		this.side = (char) (key % 128);
 	}
 	
 	public OffHeapBenchmarkTradeBean(long tradeId, long clientId,
@@ -100,16 +101,16 @@ public class OffHeapBenchmarkTradeBean implements OffHeapBenchmarkTrade {
 		return side;
 	}
 	
+	public void setSide(char side) {
+		this.side = side;
+	}
+	
 	@Override
 	public String toString() {
 		return "OffHeapBenchmarkTradeBean [tradeId=" + tradeId + ", clientId="
 				+ clientId + ", venueCode=" + venueCode + ", instrumentCode="
 				+ instrumentCode + ", price=" + price + ", quantity="
 				+ quantity + ", side=" + side + "]";
-	}
-
-	public void setSide(char side) {
-		this.side = side;
 	}
 
 }

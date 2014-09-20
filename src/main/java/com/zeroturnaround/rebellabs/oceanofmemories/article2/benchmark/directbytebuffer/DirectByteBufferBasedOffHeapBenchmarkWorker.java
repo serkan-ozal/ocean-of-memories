@@ -2,6 +2,9 @@ package com.zeroturnaround.rebellabs.oceanofmemories.article2.benchmark.directby
 
 import java.nio.ByteBuffer;
 
+import sun.misc.Cleaner;
+import sun.nio.ch.DirectBuffer;
+
 import com.zeroturnaround.rebellabs.oceanofmemories.article2.benchmark.ByteBufferBasedOffHeapBenchmarkWorker;
 
 public class DirectByteBufferBasedOffHeapBenchmarkWorker extends ByteBufferBasedOffHeapBenchmarkWorker {
@@ -15,6 +18,14 @@ public class DirectByteBufferBasedOffHeapBenchmarkWorker extends ByteBufferBased
 	@Override
 	protected ByteBuffer createByteBuffer(int size) {
 		return ByteBuffer.allocateDirect(size);
+	}
+	
+	@Override
+	public void finish() {
+		Cleaner cleaner = ((DirectBuffer) bb).cleaner();
+	    if (cleaner != null) {
+	    	cleaner.clean();
+	    }
 	}
 	
 }

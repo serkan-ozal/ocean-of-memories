@@ -1,10 +1,10 @@
 package com.zeroturnaround.rebellabs.oceanofmemories.article2;
 
 import com.zeroturnaround.rebellabs.oceanofmemories.article2.benchmark.OffHeapBenchmarkWorker;
-import com.zeroturnaround.rebellabs.oceanofmemories.article2.benchmark.memorymappedfile.MemoryMappedFileBasedOffHeapBenchmarkWorker;
+import com.zeroturnaround.rebellabs.oceanofmemories.article2.benchmark.proxyonunsafe.ProxyOnUnsafeBasedOffHeapBenchmarkWorker;
 import com.zeroturnaround.rebellabs.oceanofmemories.article2.domain.model.OffHeapBenchmarkTrade;
 
-public class OffHeapWithMemoryMappedFileDemo {
+public class OffHeapWithProxyOnUnsafeDemo {
 
 	static {
 		System.setProperty("disableHotspotSA", "true");
@@ -14,7 +14,7 @@ public class OffHeapWithMemoryMappedFileDemo {
 		final int ELEMENT_COUNT = 1000;
 		int key = 1000;
 		OffHeapBenchmarkWorker runner = 
-				new MemoryMappedFileBasedOffHeapBenchmarkWorker(ELEMENT_COUNT);
+				new ProxyOnUnsafeBasedOffHeapBenchmarkWorker(ELEMENT_COUNT);
 		
 		for (int i = 0; i < ELEMENT_COUNT; i++, key++) {
 			OffHeapBenchmarkTrade element = runner.createElement();

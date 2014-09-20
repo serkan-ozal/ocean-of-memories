@@ -6,6 +6,10 @@ import com.zeroturnaround.rebellabs.oceanofmemories.article2.domain.model.OffHea
 
 public class OffHeapWithDirectByteBufferDemo {
 
+	static {
+		System.setProperty("disableHotspotSA", "true");
+	}
+	
 	public static void main(String[] args) {
 		final int ELEMENT_COUNT = 1000;
 		int key = 1000;
@@ -20,7 +24,7 @@ public class OffHeapWithDirectByteBufferDemo {
 			element.setInstrumentCode((int) (key >> 4));
 			element.setPrice(key << 3);
 			element.setQuantity(key << 4);
-			element.setSide((char) (key % Character.MAX_VALUE));
+			element.setSide((char) (key % 128));
 			runner.saveElement(element);
 		}
 
